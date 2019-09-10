@@ -57,3 +57,9 @@ plt.grid(True)
 plt.tight_layout()
 # # ax.savefig('comic_style.png')
 plt.show()
+
+
+'''
+subplot with 
+fig, [ax1, ax2, ax3] = plt.subplots(nrows=3, ncols=2,figsize=(12,10))
+'''
