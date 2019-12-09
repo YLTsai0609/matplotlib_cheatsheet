@@ -34,7 +34,7 @@ without legend
 #             alpha=.75)
 
 # Size plot with legend
-'''N = 50
+N = 50
 M = 5 # Number of bins
 
 x = np.random.rand(N)
@@ -48,14 +48,13 @@ grouped = df.groupby(np.digitize(df.a2, bins))
 
 # Create some sizes and some labels.
 sizes = [50*(i+1.) for i in range(M)]
-print(sizes)
 labels = ['Tiny', 'Small', 'Medium', 'Large', 'Huge']
 
 for i, (name, group) in enumerate(grouped):
     plt.scatter(group.x, group.y, s=sizes[i], alpha=0.5, label=labels[i])
 
 plt.legend()
-plt.show()''';
+plt.show()
 
 # log scale if you want
 plt.tight_layout()
