@@ -3,6 +3,8 @@ Reference
 製作gif https://zhuanlan.zhihu.com/p/39454286
 從png來製作gif
 https://stackoverflow.com/questions/753190/programmatically-generate-video-or-animated-gif-in-python
+設定frame rate
+https://stackoverflow.com/questions/38433425/custom-frame-duration-for-animated-gif-in-python-imageio
 '''
 
 import sys
