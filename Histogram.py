@@ -33,3 +33,21 @@ plt.legend()
 # plt.grid(True)
 plt.tight_layout()
 plt.show()
+
+# a function
+'''
+col = 'HUMIDITY'
+df = df_sales
+offset = df[col].std() / 2
+
+fig, ax = plt.subplots(figsize=(12,8))
+bins = np.linspace(df[col].min() - offset, df[col].max() + offset, 20)
+
+ax.hist(df[col], bins=bins, edgecolor='black')
+plt.title(col)
+plt.ylabel('total counts')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+
+'''
