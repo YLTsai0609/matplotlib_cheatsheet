@@ -4,7 +4,10 @@ import pandas as pd
 # show the default style
 # print(plt.style.available)
 # use style
+
 plt.style.use('seaborn')
+# use science 
+# plt.style.context(['science', 'ieee','no-latex'])
 x = 5.5 * np.random.randn(20,1) + 25
 y = 5.5 * np.random.randn(20,1) + 25
 # s -> size, c -> green, makers = 'X'
@@ -57,5 +60,5 @@ plt.legend()
 plt.show()
 
 # log scale if you want
-plt.tight_layout()
-plt.show()
+# plt.tight_layout()
+# plt.show()
