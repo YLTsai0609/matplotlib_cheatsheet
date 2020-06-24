@@ -7,6 +7,7 @@ FileNotFoundError: [Errno 2] No such file or directory: 'latex': 'latex'
 check issue no.2
 https://github.com/garrettj403/SciencePlots/issues/2
 
+basically line plot
 """
 
 import numpy as np 

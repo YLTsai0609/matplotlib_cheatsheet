@@ -17,9 +17,4 @@ plt.legend(loc='upper right')
 plt.xticks(np.arange(8), ('Tom', 'Dick', 'Harry', 'Sally', 'Sue','PPP','QQQ','RRR','SSS'))
 plt.show()
 
-import pandas as pd
 
-df = pd.DataFrame({
-    'pred': np.random.random(size=100),
-    'ture': np.random.choice(a=np.array([0, 1]), size=100)
-})

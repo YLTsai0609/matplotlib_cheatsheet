@@ -6,12 +6,11 @@ import pandas as pd
 # print(plt.style.available)
 # use style
 
-# print(plt.style.available)
+print(plt.style.available)
 
-# plt.style.use('fivethirtyeight')
+plt.style.use('fivethirtyeight')
 # use science 
 # plt.style.context(['science', 'ieee','no-latex'])
-# plt.style.context(['science','no-latex'])
 x = 5.5 * np.random.randn(20,1) + 25
 y = 5.5 * np.random.randn(20,1) + 25
 # s -> size, c -> green, makers = 'X'
@@ -39,24 +38,23 @@ color = 5.5 * np.random.randn(20,1) + 25
 ax = plt.scatter(x, y, s=size, c=color, cmap='Blues',
             edgecolors='black', linewidths=2,
             alpha=.75)
-plt.show()
 
-# # Size plot with legend
-# N = 50
-# M = 5 # Number of bins
+# Size plot with legend
+N = 50
+M = 5 # Number of bins
 
-# x = np.random.rand(N)
-# y = np.random.rand(N)
-# a2 = 400*np.random.rand(N)
+x = np.random.rand(N)
+y = np.random.rand(N)
+a2 = 400*np.random.rand(N)
 
-# # Create the DataFrame from your randomised data and bin it using groupby.
-# df = pd.DataFrame(data=dict(x=x, y=y, a2=a2))
-# bins = np.linspace(df.a2.min(), df.a2.max(), M)
-# grouped = df.groupby(np.digitize(df.a2, bins))
+# Create the DataFrame from your randomised data and bin it using groupby.
+df = pd.DataFrame(data=dict(x=x, y=y, a2=a2))
+bins = np.linspace(df.a2.min(), df.a2.max(), M)
+grouped = df.groupby(np.digitize(df.a2, bins))
 
-# # Create some sizes and some labels.
-# sizes = [50*(i+1.) for i in range(M)]
-# labels = ['Tiny', 'Small', 'Medium', 'Large', 'Huge']
+# Create some sizes and some labels.
+sizes = [50*(i+1.) for i in range(M)]
+labels = ['Tiny', 'Small', 'Medium', 'Large', 'Huge']
 
 # +
 # for i, (name, group) in enumerate(grouped):

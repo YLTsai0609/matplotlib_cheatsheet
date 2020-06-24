@@ -33,5 +33,3 @@ def imscatter(x, y, image, ax=None, zoom=1):
     return artists
 
 main()
-
-
