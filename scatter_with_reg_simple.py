@@ -32,15 +32,15 @@ print(np.max(np.abs(re.fittedvalues - fittedvalues)))
 print(np.max(np.abs(iv_l - predict_ci_low)))
 print(np.max(np.abs(iv_u - predict_ci_upp)))
 
-
-plt.scatter(x, y, label='data', alpha=.4)
-plt.plot(x, fittedvalues, '-', label='fit')
-plt.plot(x, predict_ci_low, 'r--',label='95% prediction limit')
-plt.plot(x, predict_ci_upp, 'r--')
-plt.plot(x, predict_mean_ci_low, 'b--',lw=.5,label=f'95% ci')
-plt.plot(x, predict_mean_ci_upp, 'b--',lw=.5)
-plt.title(fr'''scatter plot with x vs y 
-$\gamma = $ {gamma:.2f}''')
-plt.legend()
-plt.tight_layout()
-plt.show()
+with plt.style.context(['science','no-latex']):
+    plt.scatter(x, y, label='data', alpha=.4)
+    plt.plot(x, fittedvalues, '-', label='fit')
+    plt.plot(x, predict_ci_low, 'r--',label='95% prediction limit')
+    plt.plot(x, predict_ci_upp, 'r--')
+    plt.plot(x, predict_mean_ci_low, 'b--',lw=.5,label=f'95% ci')
+    plt.plot(x, predict_mean_ci_upp, 'b--',lw=.5)
+    plt.title(fr'''scatter plot with x vs y 
+    $\gamma = $ {gamma:.2f}''')
+    plt.legend()
+    plt.tight_layout()
+    plt.show()

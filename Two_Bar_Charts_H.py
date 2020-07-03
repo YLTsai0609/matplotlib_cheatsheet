@@ -7,7 +7,9 @@ import numpy as np
 # show the default style
 # print(plt.style.available)
 # use style
-plt.style.use('fivethirtyeight')
+
+# plt.style.use('fivethirtyeight')
+
 # print(dir(plt))
 ###### use cosmic style #######
 # plt.xkcd()
@@ -33,18 +35,20 @@ js_dev_y = [37810, 43515, 46823, 49293, 53437,
 # plt.plot(age_x, py_dev_y,color='green', linewidth=3, label='Python Devs')
 ################ REAL barplot ################
 # a little hacky
-plt.bar(x_indexes, py_dev_y, width = width, label='Python Devs')
-plt.bar(x_indexes - width, dev_y, width=width, label='All Devs')
-plt.bar(x_indexes + width, js_dev_y,width = width,  label='JavaScript Devs')
-# 最後畫dot的圖形可以避免被遮住
 
-plt.xlabel('Ages')
-plt.ylabel('Median Salary (USD)')
-plt.title('Median Salary (USD) by Age')
-plt.legend()
-# use plt.ticks
-plt.xticks(ticks=x_indexes, labels=age_x)
-# plt.grid(True)
-plt.tight_layout()
-plt.savefig('comic_style.png')
-plt.show()
+with plt.style.context(['science','no-latex']):
+    plt.bar(x_indexes, py_dev_y, width = width, label='Python Devs')
+    plt.bar(x_indexes - width, dev_y, width=width, label='All Devs')
+    plt.bar(x_indexes + width, js_dev_y,width = width,  label='JavaScript Devs')
+    # 最後畫dot的圖形可以避免被遮住
+
+    plt.xlabel('Ages')
+    plt.ylabel('Median Salary (USD)')
+    plt.title('Median Salary (USD) by Age')
+    plt.legend()
+    # use plt.ticks
+    plt.xticks(ticks=x_indexes, labels=age_x)
+    # plt.grid(True)
+    plt.tight_layout()
+    # plt.savefig('comic_style.png')
+    plt.show()

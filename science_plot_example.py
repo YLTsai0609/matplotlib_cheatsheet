@@ -44,6 +44,7 @@ with plt.style.context(['science', 'ieee','no-latex']):
     fig.savefig('ex_science_plot/fig2.jpg', dpi=300)
 
 with plt.style.context(['science', 'scatter','no-latex']):
+    # scatter
     fig, ax = plt.subplots(figsize=(4,4))
     ax.plot([-2, 2], [-2, 2], 'k--')
     ax.fill_between([-2, 2], [-2.2, 1.8], [-1.8, 2.2], color='dodgerblue', alpha=0.2, lw=0)
