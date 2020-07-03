@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-# # Color code
-# * [hex color code, rgb, hsv](https://htmlcolorcodes.com/)
-
 from matplotlib import pyplot as plt
 import numpy as np
 # show the default style
@@ -11,7 +8,7 @@ plt.style.use('fivethirtyeight')
 # print(dir(plt))
 ###### use cosmic style #######
 # plt.xkcd()
-# Once you choose a style, 
+# Once you chhose a style, 
 # It might have some default color, linewidth, grid, or somthing else
 # data
 age_x = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
