@@ -13,14 +13,13 @@ X_detail = np.linspace(-3, 3, 1024)
 Y_detail = np.sinc(X_detail)
 
 
-
-rc1 = {"font.size" : 16}
-rc2 = {"font.size" : 8}
+rc1 = {"font.size": 16}
+rc2 = {"font.size": 8}
 
 plt.rcParams.update(rc1)
 
-with plt.style.context(['science','no-latex']):
-    fig, ax = plt.subplots(nrows=1, ncols=1,figsize=(12, 8))
+with plt.style.context(['science', 'grid', 'no-latex']):
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 8))
     ax.plot(X, Y, label='prediction')
     ax.plot(X, [0.03 for i in range(X.shape[0])], label='baseline')
 

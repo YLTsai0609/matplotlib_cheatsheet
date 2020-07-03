@@ -9,10 +9,12 @@ def main():
     y = np.cos(x)
     image_path = get_sample_data('ada.png')
     # image_path = '/Users/longlong/Desktop/matplotlib_practice/images/Obama.jpg'
-    fig, ax = plt.subplots()
-    imscatter(x, y, image_path, zoom=0.05, ax=ax)
-    ax.plot(x, y)
-    plt.show()
+    with plt.style.context(['science', 'no-latex']):
+        fig, ax = plt.subplots()
+        imscatter(x, y, image_path, zoom=0.05, ax=ax)
+        ax.plot(x, y)
+        plt.show()
+
 
 def imscatter(x, y, image, ax=None, zoom=1):
     if ax is None:
@@ -32,6 +34,5 @@ def imscatter(x, y, image, ax=None, zoom=1):
     ax.autoscale()
     return artists
 
+
 main()
-
-

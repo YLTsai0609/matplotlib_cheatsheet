@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 
 # plt.style.context(['science', 'ieee','no-latex'])
 
+
 def plot_ci_manual(t, s_err, n, x, x2, y2, ax=None):
     """Return an axes of confidence bands using a simple approach.
 
@@ -27,7 +28,8 @@ def plot_ci_manual(t, s_err, n, x, x2, y2, ax=None):
     if ax is None:
         ax = plt.gca()
 
-    ci = t * s_err * np.sqrt(1/n + (x2 - np.mean(x))**2 / np.sum((x - np.mean(x))**2))
+    ci = t * s_err * np.sqrt(1 / n + (x2 - np.mean(x))
+                             ** 2 / np.sum((x - np.mean(x))**2))
     ax.fill_between(x2, y2 + ci, y2 - ci, color="#b9cfe7", edgecolor="")
 
     return ax
@@ -53,7 +55,7 @@ def plot_ci_bootstrap(xs, ys, resid, nboot=500, ax=None):
     .. [1] J. Stults. "Visualizing Confidence Intervals", Various Consequences.
        http://www.variousconsequences.com/2010/02/visualizing-confidence-intervals.html
 
-    """ 
+    """
     if ax is None:
         ax = plt.gca()
 
@@ -62,93 +64,112 @@ def plot_ci_bootstrap(xs, ys, resid, nboot=500, ax=None):
     for _ in range(nboot):
         resamp_resid = resid[bootindex(0, len(resid) - 1, len(resid))]
         # Make coeffs of for polys
-        pc = sp.polyfit(xs, ys + resamp_resid, 1)                   
+        pc = sp.polyfit(xs, ys + resamp_resid, 1)
         # Plot bootstrap cluster
-        ax.plot(xs, sp.polyval(pc, xs), "b-", linewidth=2, alpha=3.0 / float(nboot))
+        ax.plot(xs, sp.polyval(pc, xs), "b-",
+                linewidth=2, alpha=3.0 / float(nboot))
 
     return ax
 
-heights = np.array([50,52,53,54,58,60,62,64,66,67,68,70,72,74,76,55,50,45,65])
-weights = np.array([25,50,55,75,80,85,50,65,85,55,45,45,50,75,95,65,50,40,45])
+
+heights = np.array([50, 52, 53, 54, 58, 60, 62, 64, 66,
+                    67, 68, 70, 72, 74, 76, 55, 50, 45, 65])
+weights = np.array([25, 50, 55, 75, 80, 85, 50, 65, 85,
+                    55, 45, 45, 50, 75, 95, 65, 50, 40, 45])
 
 x = heights
 y = weights
 
 # Modeling with Numpy
+
+
 def equation(a, b):
     """Return a 1D polynomial."""
-    return np.polyval(a, b) 
+    return np.polyval(a, b)
 
-p, cov = np.polyfit(x, y, 1, cov=True)                     # parameters and covariance from of the fit of 1-D polynom.
-y_model = equation(p, x)                                   # model using the fit parameters; NOTE: parameters here are coefficients
+
+# parameters and covariance from of the fit of 1-D polynom.
+p, cov = np.polyfit(x, y, 1, cov=True)
+# model using the fit parameters; NOTE: parameters here are coefficients
+y_model = equation(p, x)
 
 # Statistics
-n = weights.size                                           # number of observations
+# number of observations
+n = weights.size
 m = p.size                                                 # number of parameters
 dof = n - m                                                # degrees of freedom
-t = stats.t.ppf(0.975, n - m)                              # used for CI and PI bands
+# used for CI and PI bands
+t = stats.t.ppf(0.975, n - m)
 
 # Estimates of Error in Data/Model
-resid = y - y_model                           
-chi2 = np.sum((resid / y_model)**2)                        # chi-squared; estimates error in data
-chi2_red = chi2 / dof                                      # reduced chi-squared; measures goodness of fit
-s_err = np.sqrt(np.sum(resid**2) / dof) 
+resid = y - y_model
+# chi-squared; estimates error in data
+chi2 = np.sum((resid / y_model)**2)
+# reduced chi-squared; measures goodness of fit
+chi2_red = chi2 / dof
+s_err = np.sqrt(np.sum(resid**2) / dof)
 
 # Plotting --------------------------------------------------------------------
-fig, ax = plt.subplots(figsize=(8, 6))
+with plt.style.context(['science', 'no-latex']):
 
-# Data
-ax.plot(
-    x, y, "o", color="#b9cfe7", markersize=8, 
-    markeredgewidth=1, markeredgecolor="b", markerfacecolor="None"
-)
+    fig, ax = plt.subplots(figsize=(8, 6))
 
-# Fit
-ax.plot(x, y_model, "-", color="0.1", linewidth=1.5, alpha=0.5, label="Fit")  
+    # Data
+    ax.plot(
+        x, y, "o", color="#b9cfe7", markersize=8,
+        markeredgewidth=1, markeredgecolor="b", markerfacecolor="None"
+    )
 
-x2 = np.linspace(np.min(x), np.max(x), 100)
-y2 = equation(p, x2)
+    # Fit
+    ax.plot(x, y_model, "-", color="0.1",
+            linewidth=1.5, alpha=0.5, label="Fit")
 
-# Confidence Interval (select one)
-# plot_ci_manual(t, s_err, n, x, x2, y2, ax=ax)
-plot_ci_bootstrap(x, y, resid, ax=ax)
+    x2 = np.linspace(np.min(x), np.max(x), 100)
+    y2 = equation(p, x2)
 
-# Prediction Interval
-pi = t * s_err * np.sqrt(1 + 1/n + (x2 - np.mean(x))**2 / np.sum((x - np.mean(x))**2))   
-ax.fill_between(x2, y2 + pi, y2 - pi, color="None", linestyle="--")
-ax.plot(x2, y2 - pi, "--", color="0.5", label="95% Prediction Limits")
-ax.plot(x2, y2 + pi, "--", color="0.5")
+    # Confidence Interval (select one)
+    # plot_ci_manual(t, s_err, n, x, x2, y2, ax=ax)
+    plot_ci_bootstrap(x, y, resid, ax=ax)
 
+    # Prediction Interval
+    pi = t * s_err * np.sqrt(1 + 1 / n + (x2 - np.mean(x))
+                             ** 2 / np.sum((x - np.mean(x))**2))
+    ax.fill_between(x2, y2 + pi, y2 - pi, color="None", linestyle="--")
+    ax.plot(x2, y2 - pi, "--", color="0.5", label="95% Prediction Limits")
+    ax.plot(x2, y2 + pi, "--", color="0.5")
 
-# Figure Modifications --------------------------------------------------------
-# Borders
-ax.spines["top"].set_color("0.5")
-ax.spines["bottom"].set_color("0.5")
-ax.spines["left"].set_color("0.5")
-ax.spines["right"].set_color("0.5")
-ax.get_xaxis().set_tick_params(direction="out")
-ax.get_yaxis().set_tick_params(direction="out")
-ax.xaxis.tick_bottom()
-ax.yaxis.tick_left() 
+    # Figure Modifications --------------------------------------------------------
+    # Borders
+    ax.spines["top"].set_color("0.5")
+    ax.spines["bottom"].set_color("0.5")
+    ax.spines["left"].set_color("0.5")
+    ax.spines["right"].set_color("0.5")
+    ax.get_xaxis().set_tick_params(direction="out")
+    ax.get_yaxis().set_tick_params(direction="out")
+    ax.xaxis.tick_bottom()
+    ax.yaxis.tick_left()
 
-# Labels
-plt.title("Fit Plot for Weight", fontsize="14", fontweight="bold")
-plt.xlabel("Height")
-plt.ylabel("Weight")
-plt.xlim(np.min(x) - 1, np.max(x) + 1)
+    # Labels
+    plt.title("Fit Plot for Weight", fontsize="14", fontweight="bold")
+    plt.xlabel("Height")
+    plt.ylabel("Weight")
+    plt.xlim(np.min(x) - 1, np.max(x) + 1)
 
-# Custom legend
-handles, labels = ax.get_legend_handles_labels()
-display = (0, 1)
-anyArtist = plt.Line2D((0, 1), (0, 0), color="#b9cfe7")    # create custom artists
-legend = plt.legend(
-    [handle for i, handle in enumerate(handles) if i in display] + [anyArtist],
-    [label for i, label in enumerate(labels) if i in display] + ["95% Confidence Limits"],
-    loc=9, bbox_to_anchor=(0, -0.21, 1., 0.102), ncol=3, mode="expand"
-) 
-frame = legend.get_frame().set_edgecolor("0.5")
+    # Custom legend
+    handles, labels = ax.get_legend_handles_labels()
+    display = (0, 1)
+    # create custom artists
+    anyArtist = plt.Line2D((0, 1), (0, 0), color="#b9cfe7")
+    legend = plt.legend(
+        [handle for i, handle in enumerate(
+            handles) if i in display] + [anyArtist],
+        [label for i, label in enumerate(
+            labels) if i in display] + ["95% Confidence Limits"],
+        loc=9, bbox_to_anchor=(0, -0.21, 1., 0.102), ncol=3, mode="expand"
+    )
+    frame = legend.get_frame().set_edgecolor("0.5")
 
-# Save Figure
-plt.tight_layout()
+    # Save Figure
+    plt.tight_layout()
 
-plt.show()
+    plt.show()

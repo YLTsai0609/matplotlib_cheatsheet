@@ -4,12 +4,12 @@ from matplotlib import animation
 
 fig, ax = plt.subplots()
 
-x = np.arange(0, 2*np.pi, 0.01)
+x = np.arange(0, 2 * np.pi, 0.01)
 line, = ax.plot(x, np.sin(x))
 
 
 def animate(i):
-    line.set_ydata(np.sin(x + i/10.0))  # update the data
+    line.set_ydata(np.sin(x + i / 10.0))  # update the data
     return line,
 
 
@@ -17,6 +17,7 @@ def animate(i):
 def init():
     line.set_ydata(np.sin(x))
     return line,
+
 
 # call the animator.  blit=True means only re-draw the parts that have changed.
 # blit=False re-draw all of them

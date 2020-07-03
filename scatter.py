@@ -9,11 +9,11 @@ import pandas as pd
 # print(plt.style.available)
 
 # plt.style.use('fivethirtyeight')
-# use science 
+# use science
 # plt.style.context(['science', 'ieee','no-latex'])
 # plt.style.context(['science','no-latex'])
-x = 5.5 * np.random.randn(20,1) + 25
-y = 5.5 * np.random.randn(20,1) + 25
+x = 5.5 * np.random.randn(20, 1) + 25
+y = 5.5 * np.random.randn(20, 1) + 25
 # s -> size, c -> green, makers = 'X'
 # edgecolor='black', linewidth= 2
 # alpha = .7
@@ -28,18 +28,19 @@ plt.scatter(x, y, s=100, c=color, cmap='Blues','summer'
 # 需要加入color bar
 cbar = plt.colorbar()
 cbar.set_label('Earns More Money')
-''';
+'''
 '''
 Size PART
 (1)
 without legend
 '''
-size = 5.5 * np.random.randn(20,1) + 200
-color = 5.5 * np.random.randn(20,1) + 25
-ax = plt.scatter(x, y, s=size, c=color, cmap='Blues',
-            edgecolors='black', linewidths=2,
-            alpha=.75)
-plt.show()
+with plt.style.context(['science', 'scatter', 'no-latex']):
+    size = 5.5 * np.random.randn(20, 1) + 200
+    color = 5.5 * np.random.randn(20, 1) + 25
+    ax = plt.scatter(x, y, s=size, c=color, cmap='Blues',
+                     edgecolors='black', linewidths=2,
+                     alpha=.75)
+    plt.show()
 
 # # Size plot with legend
 # N = 50

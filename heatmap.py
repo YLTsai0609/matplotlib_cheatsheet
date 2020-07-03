@@ -17,26 +17,27 @@ harvest = np.array([[0.8, 2.4, 2.5, 3.9, 0.0, 4.0, 0.0],
                     [0.1, 2.0, 0.0, 1.4, 0.0, 1.9, 6.3]])
 
 
-fig, ax = plt.subplots()
-im = ax.imshow(harvest)
+with plt.style.context(['science', 'no-latex']):
+    fig, ax = plt.subplots()
+    im = ax.imshow(harvest)
 
-# We want to show all ticks...
-ax.set_xticks(np.arange(len(farmers)))
-ax.set_yticks(np.arange(len(vegetables)))
-# ... and label them with the respective list entries
-ax.set_xticklabels(farmers)
-ax.set_yticklabels(vegetables)
+    # We want to show all ticks...
+    ax.set_xticks(np.arange(len(farmers)))
+    ax.set_yticks(np.arange(len(vegetables)))
+    # ... and label them with the respective list entries
+    ax.set_xticklabels(farmers)
+    ax.set_yticklabels(vegetables)
 
-# Rotate the tick labels and set their alignment.
-plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
-         rotation_mode="anchor")
+    # Rotate the tick labels and set their alignment.
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
+             rotation_mode="anchor")
 
-# Loop over data dimensions and create text annotations.
-for i in range(len(vegetables)):
-    for j in range(len(farmers)):
-        text = ax.text(j, i, harvest[i, j],
-                       ha="center", va="center", color="w")
+    # Loop over data dimensions and create text annotations.
+    for i in range(len(vegetables)):
+        for j in range(len(farmers)):
+            text = ax.text(j, i, harvest[i, j],
+                           ha="center", va="center", color="w")
 
-ax.set_title("Harvest of local farmers (in tons/year)")
-fig.tight_layout()
-plt.show()
+    ax.set_title("Harvest of local farmers (in tons/year)")
+    fig.tight_layout()
+    plt.show()

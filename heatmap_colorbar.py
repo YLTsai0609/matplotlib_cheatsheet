@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
 
+
 def heatmap(data, row_labels, col_labels, ax=None,
             cbar_kw={}, cbarlabel="", **kwargs):
     """
@@ -55,8 +56,8 @@ def heatmap(data, row_labels, col_labels, ax=None,
     for edge, spine in ax.spines.items():
         spine.set_visible(False)
 
-    ax.set_xticks(np.arange(data.shape[1]+1)-.5, minor=True)
-    ax.set_yticks(np.arange(data.shape[0]+1)-.5, minor=True)
+    ax.set_xticks(np.arange(data.shape[1] + 1) - .5, minor=True)
+    ax.set_yticks(np.arange(data.shape[0] + 1) - .5, minor=True)
     ax.grid(which="minor", color="w", linestyle='-', linewidth=3)
     ax.tick_params(which="minor", bottom=False, left=False)
 
@@ -98,7 +99,7 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
     if threshold is not None:
         threshold = im.norm(threshold)
     else:
-        threshold = im.norm(data.max())/2.
+        threshold = im.norm(data.max()) / 2.
 
     # Set default alignment to center, but allow it to be
     # overwritten by textkw.
@@ -122,26 +123,25 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
     return texts
 
 
-fig, ax = plt.subplots()
+with plt.style.context(['science', 'no-latex']):
+    fig, ax = plt.subplots()
 
+    vegetables = ["cucumber", "tomato", "lettuce", "asparagus",
+                  "potato", "wheat", "barley"]
+    farmers = ["Farmer Joe", "Upland Bros.", "Smith Gardening",
+               "Agrifun", "Organiculture", "BioGoods Ltd.", "Cornylee Corp."]
 
-vegetables = ["cucumber", "tomato", "lettuce", "asparagus",
-              "potato", "wheat", "barley"]
-farmers = ["Farmer Joe", "Upland Bros.", "Smith Gardening",
-           "Agrifun", "Organiculture", "BioGoods Ltd.", "Cornylee Corp."]
+    harvest = np.array([[0.8, 2.4, 2.5, 3.9, 0.0, 4.0, 0.0],
+                        [2.4, 0.0, 4.0, 1.0, 2.7, 0.0, 0.0],
+                        [1.1, 2.4, 0.8, 4.3, 1.9, 4.4, 0.0],
+                        [0.6, 0.0, 0.3, 0.0, 3.1, 0.0, 0.0],
+                        [0.7, 1.7, 0.6, 2.6, 2.2, 6.2, 0.0],
+                        [1.3, 1.2, 0.0, 0.0, 0.0, 3.2, 5.1],
+                        [0.1, 2.0, 0.0, 1.4, 0.0, 1.9, 6.3]])
 
-harvest = np.array([[0.8, 2.4, 2.5, 3.9, 0.0, 4.0, 0.0],
-                    [2.4, 0.0, 4.0, 1.0, 2.7, 0.0, 0.0],
-                    [1.1, 2.4, 0.8, 4.3, 1.9, 4.4, 0.0],
-                    [0.6, 0.0, 0.3, 0.0, 3.1, 0.0, 0.0],
-                    [0.7, 1.7, 0.6, 2.6, 2.2, 6.2, 0.0],
-                    [1.3, 1.2, 0.0, 0.0, 0.0, 3.2, 5.1],
-                    [0.1, 2.0, 0.0, 1.4, 0.0, 1.9, 6.3]])
+    im, cbar = heatmap(harvest, vegetables, farmers, ax=ax,
+                       cmap="YlGn", cbarlabel="harvest [t/year]")
+    texts = annotate_heatmap(im, valfmt="{x:.1f} t")
 
-
-im, cbar = heatmap(harvest, vegetables, farmers, ax=ax,
-                   cmap="YlGn", cbarlabel="harvest [t/year]")
-texts = annotate_heatmap(im, valfmt="{x:.1f} t")
-
-fig.tight_layout()
-plt.show()
+    fig.tight_layout()
+    plt.show()

@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-# use those 
+# use those
 # idx_list = pivot_df.index.tolist()
 # col_list = pivot_df.columns.tolist()
 # count_values = pivot_df.values
@@ -14,9 +14,9 @@ import matplotlib.pyplot as plt
 # make annotation bigger
 
 col_list = ["cucumber", "tomato", "lettuce", "asparagus",
-              "potato", "wheat", "barley"]
+            "potato", "wheat", "barley"]
 idx_list = ["Farmer Joe", "Upland Bros.", "Smith Gardening",
-           "Agrifun", "Organiculture", "BioGoods Ltd.", "Cornylee Corp."]
+            "Agrifun", "Organiculture", "BioGoods Ltd.", "Cornylee Corp."]
 
 harvest = np.array([[0.8, 2.4, 2.5, 3.9, 0.0, 4.0, 0.0],
                     [2.4, 0.0, 4.0, 1.0, 2.7, 0.0, 0.0],
@@ -26,17 +26,17 @@ harvest = np.array([[0.8, 2.4, 2.5, 3.9, 0.0, 4.0, 0.0],
                     [1.3, 1.2, 0.0, 0.0, 0.0, 3.2, 5.1],
                     [0.1, 2.0, 0.0, 1.4, 0.0, 1.9, 6.3]])
 
-count_values = harvest 
-smoother_values_for_plot = 10 * (count_values  ** (0.5))
+count_values = harvest
+smoother_values_for_plot = 10 * (count_values ** (0.5))
 
 bigger_annotation = {'font.size': 18}
 
 
 with plt.rc_context(bigger_annotation):
-    with plt.style.context(['science','no-latex']):
+    with plt.style.context(['science', 'no-latex']):
         # paper style =)
-        fig, ax = plt.subplots(nrows=1,ncols=1,figsize=(8,6))
-        im = ax.imshow(smoother_values_for_plot,cmap='Blues')
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
+        im = ax.imshow(smoother_values_for_plot, cmap='Blues')
 
         # We want to show all ticks...
         ax.set_xticks(np.arange(len(col_list)))
@@ -47,13 +47,13 @@ with plt.rc_context(bigger_annotation):
 
         # Rotate the tick labels and set their alignment.
         plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
-                rotation_mode="anchor")
+                 rotation_mode="anchor")
 
         # Loop over data dimensions and create text annotations.
         for i in range(len(idx_list)):
             for j in range(len(col_list)):
                 text = ax.text(j, i, count_values[i, j],
-                            ha="center", va="center", color="w")
+                               ha="center", va="center", color="w")
 
         ax.set_title("Figure Title")
         fig.tight_layout()
