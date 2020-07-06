@@ -35,6 +35,7 @@ with plt.style.context(['science', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig1.pdf')
     fig.savefig('ex_science_plot/fig1.jpg', dpi=300)
+    plt.show()
 
 with plt.style.context(['science', 'ieee', 'no-latex']):
     fig, ax = plt.subplots()
@@ -46,6 +47,7 @@ with plt.style.context(['science', 'ieee', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig2.pdf')
     fig.savefig('ex_science_plot/fig2.jpg', dpi=300)
+    plt.show()
 
 with plt.style.context(['science', 'scatter', 'no-latex']):
     # scatter
@@ -64,6 +66,7 @@ with plt.style.context(['science', 'scatter', 'no-latex']):
     ax.set_ylim([-2, 2])
     fig.savefig('ex_science_plot/fig3.pdf')
     fig.savefig('ex_science_plot/fig3.jpg', dpi=300)
+    plt.show()
 
 with plt.style.context(['science', 'high-vis', 'no-latex']):
     fig, ax = plt.subplots()
@@ -75,6 +78,7 @@ with plt.style.context(['science', 'high-vis', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig4.pdf')
     fig.savefig('ex_science_plot/fig4.jpg', dpi=300)
+    plt.show()
 
 with plt.style.context(['dark_background', 'science', 'high-vis', 'no-latex']):
     fig, ax = plt.subplots()
@@ -86,6 +90,7 @@ with plt.style.context(['dark_background', 'science', 'high-vis', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig5.pdf')
     fig.savefig('ex_science_plot/fig5.jpg', dpi=300)
+    plt.show()
 
 with plt.style.context(['science', 'notebook', 'no-latex']):
     fig, ax = plt.subplots()
@@ -97,7 +102,7 @@ with plt.style.context(['science', 'notebook', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig10.pdf')
     fig.savefig('ex_science_plot/fig10.jpg', dpi=300)
-
+    plt.show()
 # Plot different color cycles
 
 with plt.style.context(['science', 'bright', 'no-latex']):
@@ -110,6 +115,7 @@ with plt.style.context(['science', 'bright', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig6.pdf')
     fig.savefig('ex_science_plot/fig6.jpg', dpi=300)
+    plt.show()
 
 with plt.style.context(['science', 'vibrant', 'no-latex']):
     fig, ax = plt.subplots()
@@ -121,6 +127,7 @@ with plt.style.context(['science', 'vibrant', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig7.pdf')
     fig.savefig('ex_science_plot/fig7.jpg', dpi=300)
+    plt.show()
 
 with plt.style.context(['science', 'muted', 'no-latex']):
     fig, ax = plt.subplots()
@@ -132,6 +139,7 @@ with plt.style.context(['science', 'muted', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig8.pdf')
     fig.savefig('ex_science_plot/fig8.jpg', dpi=300)
+    plt.show()
 
 with plt.style.context(['science', 'retro', 'no-latex']):
     fig, ax = plt.subplots()
@@ -143,6 +151,7 @@ with plt.style.context(['science', 'retro', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig9.pdf')
     fig.savefig('ex_science_plot/fig9.jpg', dpi=300)
+    plt.show()
 
 with plt.style.context(['science', 'grid', 'no-latex']):
     fig, ax = plt.subplots()
@@ -154,3 +163,4 @@ with plt.style.context(['science', 'grid', 'no-latex']):
     ax.autoscale(tight=True)
     fig.savefig('ex_science_plot/fig11.pdf')
     fig.savefig('ex_science_plot/fig11.jpg', dpi=300)
+    plt.show()

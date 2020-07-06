@@ -18,4 +18,5 @@ with plt.style.context(['science', 'grid', 'no-latex']):
     ax.yaxis.set_major_formatter(formatter)
     plt.bar(x, money)
     plt.xticks(x, ('Bill', 'Fred', 'Mary', 'Sue'))
+    ax.grid(axis='x')  # single axis only!?
     plt.show()
