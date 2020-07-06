@@ -1,0 +1,9 @@
+.ipynb_checkpoints/
+.vscode/
+*.log
+*.out
+.DS_Store
+__pycache__/
+KEYS/
+.vscode/
+t.py
