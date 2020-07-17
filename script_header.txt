@@ -1,0 +1,22 @@
+'''
+===================================================
+purpose in one line
+===================================================
+EXPLANATION:
+	describe this code in detail.
+INPUTS:
+	xxxxxxxxxxxxxxx
+OPTIONAL INPUT:
+	xxxxxxxxxxxxxxx
+OPTIONAL INPUT KEYWORD:
+	xxxxxxxxxxxxxxx
+OUTPUT:
+	xxxxxxxxxxxxxxx
+EXAMPLE:
+	xxxxxxxxxxxxxxx
+REVISION HISTORY:
+	functionality1  date1 author1
+	functionality2  date2 author2
+'''
+
+print(__doc__)
