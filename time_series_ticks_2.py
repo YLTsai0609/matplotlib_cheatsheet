@@ -85,7 +85,7 @@ with plt.style.context(['science', 'grid', 'no-latex']):
     # date_format = mpl_dates.DateFormatter(
     #     '%M_%S_%f')  # custom date formatter
     plt.gca().xaxis.set_major_formatter(
-        PrecisionDateFormatter("%M:%S.{ms}"))
+        PrecisionDateFormatter(fmt="%M:%S.{ms}", precision=1))
     plt.title('Bitcoin Prices')
     plt.xlabel('Date')
     plt.ylabel('Closing Price')
