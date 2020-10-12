@@ -11,16 +11,11 @@ with plt.style.context(['science', 'no-latex']):
     fig, ax = plt.subplots(figsize=(8, 6))
     ax.plot(x, y, label='sin x', color='red', linewidth=4)
     ax.plot(x, y1, label='sin 2x', color='green', linewidth=2)
-    ax.plot(x, y2, label='sin 3x', color='orange', linewidth=10)
+    ax.plot(x, y2, label='sin 3x', color='orange', linewidth=2)
+    ax.axvline(x=1, label='focus line', color='gray',
+               linestyle='-', linewidth=2)
     plt.title('line demo')
     plt.legend(loc='upper right')
     plt.xticks(np.arange(8), ('Tom', 'Dick', 'Harry',
-                              'Sally', 'Sue', 'PPP', 'QQQ', 'RRR', 'SSS'))
+                              'Sally', 'Sue', 'PPP', 'QQQ', 'RRR'))
     plt.show()
-
-import pandas as pd
-
-df = pd.DataFrame({
-    'pred': np.random.random(size=100),
-    'ture': np.random.choice(a=np.array([0, 1]), size=100)
-})
